@@ -1,0 +1,63 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title MVC
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+  style
+             include ./public/style.css  
+
+
+  script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+// Just an image
+nav.navbar.navbar-light.bg-light
+  a.navbar-brand(href='/index')
+    img(src='https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg' width='30' height='30' alt='')
+body
+    header
+      nav
+        ul.menu
+          li 
+            a(href='/users') User 
+          li
+            a(href='/plansView') Plans
+          li
+            a(href='/workspacesView') Workspaces
+          li
+            a(href='/projectsView') Projects
+            
+
+    table#user-table
+      thead
+        tr
+          th Total Users
+          th Total Active Users 
+      tbody
+        each total in totalAndActiveUsers
+          tr
+             td= `Total Users: ${total.TotalUsers}`
+             td= `Total Active Users: ${total.activeUsers}`
+
+    table#user-table
+      thead
+        tr
+          th KUID
+          th Name
+          th Email
+          th Last Login
+          th Package
+          th Registration Date & Time
+
+      tbody
+        each user in userData
+          tr
+            td= user && user.kuid ? user.kuid : ''
+            td= user && user.fullName ? user.fullName : ''
+            td= user && user.email ? user.email : ''
+            td= user && user.lastLogin ? user.lastLogin : ''
+            td= user && user.packageTitle ? user.packageTitle : ''
+            td= user && user.createdOn ? user.createdOn.toLocaleString(): ''
+
+      

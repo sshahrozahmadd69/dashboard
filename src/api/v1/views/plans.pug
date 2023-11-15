@@ -1,0 +1,54 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title MVC
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+  style
+             include ./public/style.css  
+
+
+  script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+// Just an image
+nav.navbar.navbar-light.bg-light
+  a.navbar-brand(href='/index')
+    img(src='https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg' width='30' height='30' alt='')
+body
+    header
+      nav
+        ul.menu
+          li
+            a(href='/users') User
+          li
+            a(href='/plansView') Plans 
+          li
+            a(href='/workspacesView') Workspaces
+          li
+            a(href='/projectsView') Projects
+    table#user-table
+      thead
+        tr
+          th PlaneName
+          th stripeProductId
+          th Limit Details
+          th Total Subscriptions
+          th active_users
+          //- th Registration Date
+      tbody
+        each plans in plansView
+          tr
+            td= plans && plans.PlaneName ? plans.PlaneName : ''
+            td= plans && plans.stripeProductId ? plans.stripeProductId : ''
+            td
+              | Workspace Limit: #{plans && plans.limitDetails.workspace_limit ? plans.limitDetails.workspace_limit : ''},
+              | Project Limit: #{plans && plans.limitDetails.project_limit ? plans.limitDetails.project_limit : ''},
+              | Session Limit: #{plans && plans.limitDetails.session_limit ? plans.limitDetails.session_limit : ''},
+              | User Limit: #{plans && plans.limitDetails.user_limit ? plans.limitDetails.user_limit : ''},
+              | Integrations: #{plans && plans.limitDetails.integrations ? 'Yes' : 'No'},
+              | Data Retention - Bug: #{plans && plans.limitDetails.data_retention.bug ? plans.limitDetails.data_retention.bug : ''},
+              | Data Retention - Crash: #{plans && plans.limitDetails.data_retention.crash ? plans.limitDetails.data_retention.crash : ''},
+              | Data Size: #{plans && plans.limitDetails.data_size ? plans.limitDetails.data_size : ''}
+            td= plans && plans.Total_user_count ? plans.Total_user_count : 0 
+            td= plans && plans.active_users ? plans.active_users : 0

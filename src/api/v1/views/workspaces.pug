@@ -1,0 +1,67 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title MVC
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+  style
+             include ./public/style.css  
+
+
+  script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+// Just an image
+nav.navbar.navbar-light.bg-light
+  a.navbar-brand(href='/index')
+    img(src='https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg' width='30' height='30' alt='')
+body
+    header
+      nav
+        ul.menu
+          li
+            a(href='/users') User
+          li
+            a(href='/plansView') Plans
+          li
+            a(href='/workspacesView') Workspaces 
+          li
+            a(href='/projectsView') Projects
+
+    table#user-table
+      thead
+        tr
+          th Active Users
+          th InActive Users 
+          th Bugs
+          th Crashes
+      tbody
+        each total in activeAndInactiveWorkspaces
+          tr
+             td= `Active Users: ${total.activeUsers}`
+             td= `InActive Users : ${total.inactiveUsers}`
+             td= `Total Bugs : ${totalbugs[0].Total_Issues}`
+             td= `Total Crashes : ${totalCrashes[0].Total_Crashes}`        
+
+    table#user-table
+      thead
+        tr
+          th ownerkuid
+          th owner Name
+          th worspacekuid
+          th workspaceTitle
+          th membersCount
+          th createdOn
+          th totalProjects
+          th PlanName
+      tbody
+        each workspace in workspaceData
+          tr
+            td= workspace && workspace.ownerkuid ? workspace.ownerkuid : ''
+            td= workspace && workspace.ownername ? workspace.ownername : ''
+            td= workspace && workspace.worspacekuid ? workspace.worspacekuid : ''
+            td= workspace && workspace.workspaceTitle ? workspace.workspaceTitle : ''
+            td= workspace && workspace.membersCount ? workspace.membersCount : ''
+            td= workspace && workspace.createdOn ? workspace.createdOn.toLocaleString(): ''
+            td= workspace && workspace.totalProjects ? workspace.totalProjects : ''              
+            td= workspace && workspace.PlanName ? workspace.PlanName : ''
