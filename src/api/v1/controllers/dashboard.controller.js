@@ -39,7 +39,7 @@ exports.dashboardView = async (req, res) => {
     res.render("workspaces", {workspaceData , activeAndInactiveWorkspaces, totalbugs, totalCrashes});
   };
   exports.projectsView = async (req, res) => {
-    const projectsData = await SQL.executeQuery(query.projects, null)
+    const projectsData = await SQL.executeQuery(query.projects , null)
     const totalbugs = await SQL.executeQuery(query.totalbugs, null)
     const totalCrashes = await SQL.executeQuery(query.totalCrashes, null)
     const totalReviews = await SQL.executeQuery(query.totalreviews, null)

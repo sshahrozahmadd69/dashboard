@@ -61,7 +61,7 @@ body
             td= workspace && workspace.ownername ? workspace.ownername : ''
             td= workspace && workspace.worspacekuid ? workspace.worspacekuid : ''
             td= workspace && workspace.workspaceTitle ? workspace.workspaceTitle : ''
-            td= workspace && workspace.membersCount ? workspace.membersCount : ''
+            td= workspace && workspace.membersCount ? workspace.membersCount : 0
             td= workspace && workspace.createdOn ? workspace.createdOn.toLocaleString(): ''
-            td= workspace && workspace.totalProjects ? workspace.totalProjects : ''              
+            td= workspace && workspace.totalProjects ? workspace.totalProjects : 0              
             td= workspace && workspace.PlanName ? workspace.PlanName : ''

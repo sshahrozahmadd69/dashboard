@@ -55,12 +55,12 @@ body
       tbody
         each projects in projectsData
           tr
-            td= projects && projects.ownerName ? projects.UserKUID : ''
-            td= projects && projects.fullName ? projects.UserName : ''
-            td= projects && projects.workspace_Kuid ? projects.workspaceKuid : ''
-            td= projects && projects.ProjectType ? projects.workspaceTitle : ''
-            td= projects && projects.ProjectType ? projects.projectKuid : ''
-            td= projects && projects.ProjectType ? projects.ProjectTitle : ''
-            td= projects && projects.ProjectType ? projects.platformType : ''
+            td= projects && projects.UserKUID ? projects.UserKUID : ''
+            td= projects && projects.UserName ? projects.UserName : ''
+            td= projects && projects.workspaceKuid ? projects.workspaceKuid : ''
+            td= projects && projects.workspaceTitle ? projects.workspaceTitle : ''
+            td= projects && projects.projectKuid ? projects.projectKuid : ''
+            td= projects && projects.ProjectTitle ? projects.ProjectTitle : ''
+            td= projects && projects.platformType ? projects.platformType : ''
             td= projects && projects.createdAt ? projects.createdAt.toLocaleString(): ''
-            td= projects && projects.Total_Members ? projects.totalMembers : ''              
+            td= projects && projects.totalMembers ? projects.totalMembers : ''              
