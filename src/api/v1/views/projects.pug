@@ -43,24 +43,31 @@ body
     table#user-table
       thead
         tr
-          th ownerKuid
-          th fullName
-          th workspace_Kuid
-          th workspaceName
+          th.text-center Owner Info
+          th Workspace Kuid
+          th Workspace Name
           th Project KUID 
           th Project Name
           th ProjectType
-          th createdAt
-          th Total_Members
+          th Active Status 
+          th InActive Reason
+          th SDK Integrated
+          th Total Members
+          th created On
       tbody
         each projects in projectsData
           tr
-            td= projects && projects.UserKUID ? projects.UserKUID : ''
-            td= projects && projects.UserName ? projects.UserName : ''
+            td.text-center
+              span.kuid-color #{projects && projects.UserKUID ? projects.UserKUID : ''}
+              br.text-center
+              | #{projects && projects.UserName ? projects.UserName : ''}            
             td= projects && projects.workspaceKuid ? projects.workspaceKuid : ''
             td= projects && projects.workspaceTitle ? projects.workspaceTitle : ''
             td= projects && projects.projectKuid ? projects.projectKuid : ''
             td= projects && projects.ProjectTitle ? projects.ProjectTitle : ''
             td= projects && projects.platformType ? projects.platformType : ''
-            td= projects && projects.createdAt ? projects.createdAt.toLocaleString(): ''
-            td= projects && projects.totalMembers ? projects.totalMembers : ''              
+            td(style=`background-color: ${projects && projects.isActive ? '#94DBB3' : '#E47780'}`)= projects && projects.isActive ? projects.isActive : 0
+            td= projects && projects.inactiveReason ? projects.inactiveReason : '-' 
+            td= projects && projects.is_sdk_integrated ? projects.is_sdk_integrated : '-'   
+            td= projects && projects.totalMembers ? projects.totalMembers : ''          
+            td= projects && projects.createdAt ? projects.createdAt.toLocaleString(): ''    

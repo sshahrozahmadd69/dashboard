@@ -30,11 +30,11 @@ body
     table#user-table
       thead
         tr
-          th PlaneName
-          th stripeProductId
+          th Plane Name
+          th Stripe ProductId
           th Limit Details
           th Total Subscriptions
-          th active_users
+          th Active users
           //- th Registration Date
       tbody
         each plans in plansView
@@ -42,13 +42,21 @@ body
             td= plans && plans.PlaneName ? plans.PlaneName : ''
             td= plans && plans.stripeProductId ? plans.stripeProductId : ''
             td
-              | Workspace Limit: #{plans && plans.limitDetails.workspace_limit ? plans.limitDetails.workspace_limit : ''},
-              | Project Limit: #{plans && plans.limitDetails.project_limit ? plans.limitDetails.project_limit : ''},
-              | Session Limit: #{plans && plans.limitDetails.session_limit ? plans.limitDetails.session_limit : ''},
-              | User Limit: #{plans && plans.limitDetails.user_limit ? plans.limitDetails.user_limit : ''},
-              | Integrations: #{plans && plans.limitDetails.integrations ? 'Yes' : 'No'},
-              | Data Retention - Bug: #{plans && plans.limitDetails.data_retention.bug ? plans.limitDetails.data_retention.bug : ''},
-              | Data Retention - Crash: #{plans && plans.limitDetails.data_retention.crash ? plans.limitDetails.data_retention.crash : ''},
-              | Data Size: #{plans && plans.limitDetails.data_size ? plans.limitDetails.data_size : ''}
+              | Workspace Limit: 
+              b #{plans && plans.limitDetails.workspace_limit ? plans.limitDetails.workspace_limit : ''},
+              | Project Limit: 
+              b #{plans && plans.limitDetails.project_limit ? plans.limitDetails.project_limit : ''},
+              | Session Limit: 
+              b #{plans && plans.limitDetails.session_limit ? plans.limitDetails.session_limit : ''},
+              | User Limit: 
+              b #{plans && plans.limitDetails.user_limit ? plans.limitDetails.user_limit : ''},
+              | Integrations: 
+              b #{plans && plans.limitDetails.integrations ? 'Yes' : 'No'},
+              | Data Retention - Bug: 
+              b #{plans && plans.limitDetails.data_retention.bug ? plans.limitDetails.data_retention.bug : ''},
+              | Data Retention - Crash: 
+              b #{plans && plans.limitDetails.data_retention.crash ? plans.limitDetails.data_retention.crash : ''},
+              | Data Size: 
+              b #{plans && plans.limitDetails.data_size ? plans.limitDetails.data_size : ''}
             td= plans && plans.Total_user_count ? plans.Total_user_count : 0 
             td= plans && plans.active_users ? plans.active_users : 0

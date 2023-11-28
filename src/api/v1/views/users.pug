@@ -46,6 +46,8 @@ body
           th KUID
           th Name
           th Email
+          th Active Status 
+          th In Active Reason
           th Last Login
           th Package
           th Registration Date & Time
@@ -56,8 +58,10 @@ body
             td= user && user.kuid ? user.kuid : ''
             td= user && user.fullName ? user.fullName : ''
             td= user && user.email ? user.email : ''
+            td(style=`background-color: ${user && user.isActive ? '#94DBB3' : '#E47780'}`)= user && user.isActive ? user.isActive : 0
+            td= user && user.inactiveReason ? user.inactiveReason : '-'
             td= user && user.lastLogin ? user.lastLogin : ''
             td= user && user.packageTitle ? user.packageTitle : ''
-            td= user && user.createdOn ? user.createdOn.toLocaleString(): ''
+            td= user && user.createdAt ? user.createdAt.toLocaleString(): ''
 
       

@@ -92,3 +92,15 @@
 #user-table tbody tr:hover {
   background-color: #d9d9d9;
 }
+
+.green {
+  color: #6F732F;
+}
+
+.red {
+  color: red;
+}
+.kuid-color{
+  color:#B0B3A8;
+  font-size: 10px;
+}

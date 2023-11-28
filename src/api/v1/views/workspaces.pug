@@ -46,22 +46,27 @@ body
     table#user-table
       thead
         tr
-          th ownerkuid
-          th owner Name
-          th worspacekuid
-          th workspaceTitle
-          th membersCount
-          th createdOn
-          th totalProjects
-          th PlanName
+          th.text-center Owner Info
+          th Worspace kuid
+          th Workspace Title
+          th Active Status
+          th InActive Reason
+          th Members Count
+          th Total Projects
+          th Plan Name
+          th Created On
       tbody
         each workspace in workspaceData
           tr
-            td= workspace && workspace.ownerkuid ? workspace.ownerkuid : ''
-            td= workspace && workspace.ownername ? workspace.ownername : ''
+            td.text-center 
+              span.kuid-color #{workspace && workspace.ownerkuid ? workspace.ownerkuid : ''}
+              br.text-center
+              | #{workspace && workspace.ownername ? workspace.ownername : ''}
             td= workspace && workspace.worspacekuid ? workspace.worspacekuid : ''
             td= workspace && workspace.workspaceTitle ? workspace.workspaceTitle : ''
+            td(style=`background-color: ${workspace && workspace.isActive ? '#94DBB3' : '#E47780'}`)= workspace && workspace.isActive ? workspace.isActive : 0
+            td= workspace && workspace.inactiveReason ? workspace.inactiveReason : 'Active'
             td= workspace && workspace.membersCount ? workspace.membersCount : 0
-            td= workspace && workspace.createdOn ? workspace.createdOn.toLocaleString(): ''
             td= workspace && workspace.totalProjects ? workspace.totalProjects : 0              
             td= workspace && workspace.PlanName ? workspace.PlanName : ''
+            td= workspace && workspace.createdOn ? workspace.createdOn.toLocaleString(): ''
